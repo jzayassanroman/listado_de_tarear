@@ -11,21 +11,24 @@ import { Tarea } from './tarea.entity';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    TypeOrmModule.forRoot({
-      type: process.env.DATABASE_URL ? 'postgres' : 'sqlite',
-      ...(process.env.DATABASE_URL 
-        ? { 
+    TypeOrmModule.forRoot(
+      process.env.DATABASE_URL 
+        ? {
+            type: 'postgres',
             url: process.env.DATABASE_URL,
+            entities: [Tarea],
+            synchronize: true,
+            logging: process.env.NODE_ENV === 'development',
             ssl: { rejectUnauthorized: false }
-          } 
-        : { 
-            database: 'database.sqlite'
           }
-      ),
-      entities: [Tarea],
-      synchronize: true,
-      logging: process.env.NODE_ENV === 'development',
-    }),
+        : {
+            type: 'sqlite',
+            database: 'database.sqlite',
+            entities: [Tarea],
+            synchronize: true,
+            logging: process.env.NODE_ENV === 'development',
+          }
+    ),
     TareasModule,
   ],
   controllers: [AppController],
