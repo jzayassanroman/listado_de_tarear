@@ -15,8 +15,8 @@ async function bootstrap() {
       'http://192.168.1.27:5173',
       'http://192.168.1.27:5174',
       // URLs de producción
-      'https://lista-tareas-frontend.vercel.app',
-      'https://lista-tareas.vercel.app'
+      'https://listado-de-tarear.vercel.app',
+      'https://listado-de-tarear-git-main.vercel.app'
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,

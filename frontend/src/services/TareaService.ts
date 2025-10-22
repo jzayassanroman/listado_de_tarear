@@ -12,7 +12,7 @@ const getApiBaseUrl = () => {
   
   // En producción, usar la URL de Railway
   if (hostname.includes('vercel.app')) {
-    return 'https://lista-tareas-backend-production.up.railway.app';
+    return 'https://listadodetarear-production.up.railway.app';
   }
   
   // Fallback para otros casos
