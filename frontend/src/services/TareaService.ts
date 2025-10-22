@@ -11,12 +11,12 @@ const getApiBaseUrl = () => {
   }
   
   // En producción, usar la URL de Railway
-  if (hostname.includes('vercel.app')) {
+  if (hostname.includes('vercel.app') || hostname.includes('netlify.app') || hostname.includes('github.io')) {
     return 'https://listadodetarear-production.up.railway.app';
   }
   
   // Fallback para otros casos
-  return `http://${hostname}:3000`;
+  return 'https://listadodetarear-production.up.railway.app';
 };
 
 const API_BASE_URL = getApiBaseUrl();

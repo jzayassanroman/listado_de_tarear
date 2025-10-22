@@ -7,17 +7,7 @@ async function bootstrap() {
   
   // Habilitar CORS para el frontend
   app.enableCors({
-    origin: [
-      'http://localhost:5173', 
-      'http://localhost:5174', 
-      'http://127.0.0.1:5173', 
-      'http://127.0.0.1:5174',
-      'http://192.168.1.27:5173',
-      'http://192.168.1.27:5174',
-      // URLs de producción
-      'https://listado-de-tarear.vercel.app',
-      'https://listado-de-tarear-git-main.vercel.app'
-    ],
+    origin: true, // Permitir todos los orígenes temporalmente
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
     allowedHeaders: 'Content-Type, Authorization, Accept',
