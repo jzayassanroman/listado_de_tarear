@@ -13,12 +13,18 @@ import { Tarea } from './tarea.entity';
     }),
     TypeOrmModule.forRoot({
       type: process.env.DATABASE_URL ? 'postgres' : 'sqlite',
-      url: process.env.DATABASE_URL,
-      database: process.env.DATABASE_URL ? undefined : 'database.sqlite',
+      ...(process.env.DATABASE_URL 
+        ? { 
+            url: process.env.DATABASE_URL,
+            ssl: { rejectUnauthorized: false }
+          } 
+        : { 
+            database: 'database.sqlite'
+          }
+      ),
       entities: [Tarea],
       synchronize: true,
       logging: process.env.NODE_ENV === 'development',
-      ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
     }),
     TareasModule,
   ],
