@@ -3,18 +3,18 @@ import { Tarea } from './types/Tarea';
 import { TareaService } from './services/TareaService';
 import { TareaForm } from './components/TareaForm';
 import { TareaList } from './components/TareaList';
-import { FiltrosTareas } from './components/FiltrosTareas';
+// import { FiltrosTareas } from './components/FiltrosTareas';
 import { PanelControl } from './components/PanelControl';
 
 function App() {
   const [tareas, setTareas] = useState<Tarea[]>([]);
-  const [tipos, setTipos] = useState<string[]>([]);
-  const [tipoFiltro, setTipoFiltro] = useState<string>('');
+  // const [tipos, setTipos] = useState<string[]>([]);
+  // const [tipoFiltro, setTipoFiltro] = useState<string>('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     cargarTareas();
-    cargarTipos();
+    // cargarTipos();
   }, []);
 
   const cargarTareas = async () => {
@@ -31,14 +31,14 @@ function App() {
     }
   };
 
-  const cargarTipos = async () => {
-    try {
-      const tiposData = await TareaService.obtenerTipos();
-      setTipos(tiposData);
-    } catch (error) {
-      console.error('Error al cargar tipos:', error);
-    }
-  };
+  // const cargarTipos = async () => {
+  //   try {
+  //     const tiposData = await TareaService.obtenerTipos();
+  //     setTipos(tiposData);
+  //   } catch (error) {
+  //     console.error('Error al cargar tipos:', error);
+  //   }
+  // };
 
   const agregarTarea = async (titulo: string, descripcion: string) => {
     try {
@@ -76,9 +76,9 @@ function App() {
     }
   };
 
-  const handleTipoFiltroChange = (tipo: string) => {
-    setTipoFiltro(tipo);
-  };
+  // const handleTipoFiltroChange = (tipo: string) => {
+  //   setTipoFiltro(tipo);
+  // };
 
   if (loading) {
     return (
